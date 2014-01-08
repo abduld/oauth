@@ -50,21 +50,21 @@ import (
 	"time"
 )
 
-const (
-	OAUTH_VERSION    = "1.0"
-	SIGNATURE_METHOD = "HMAC-SHA1"
+var (
+	OAUTH_VERSION    string = "1.0"
+	SIGNATURE_METHOD string = "HMAC-SHA1"
 
-	CALLBACK_PARAM         = "oauth_callback"
-	CONSUMER_KEY_PARAM     = "oauth_consumer_key"
-	NONCE_PARAM            = "oauth_nonce"
-	SESSION_HANDLE_PARAM   = "oauth_session_handle"
-	SIGNATURE_METHOD_PARAM = "oauth_signature_method"
-	SIGNATURE_PARAM        = "oauth_signature"
-	TIMESTAMP_PARAM        = "oauth_timestamp"
-	TOKEN_PARAM            = "oauth_token"
-	TOKEN_SECRET_PARAM     = "oauth_secret"
-	VERIFIER_PARAM         = "oauth_verifier"
-	VERSION_PARAM          = "oauth_version"
+	CALLBACK_PARAM         string = "oauth_callback"
+	CONSUMER_KEY_PARAM     string = "oauth_consumer_key"
+	NONCE_PARAM            string = "oauth_nonce"
+	SESSION_HANDLE_PARAM   string = "oauth_session_handle"
+	SIGNATURE_METHOD_PARAM string = "oauth_signature_method"
+	SIGNATURE_PARAM        string = "oauth_signature"
+	TIMESTAMP_PARAM        string = "oauth_timestamp"
+	TOKEN_PARAM            string = "oauth_token"
+	TOKEN_SECRET_PARAM     string = "oauth_secret"
+	VERIFIER_PARAM         string = "oauth_verifier"
+	VERSION_PARAM          string = "oauth_version"
 )
 
 // TODO(mrjones) Do we definitely want separate "Request" and "Access" token classes?
@@ -257,7 +257,7 @@ func (c *Consumer) AuthorizeToken(rtoken *RequestToken, verificationCode string)
 
 // Use the service provider to refresh the AccessToken for a given session.
 // Note that this is only supported for service providers that manage an
-// authorization session (e.g. Yahoo). 
+// authorization session (e.g. Yahoo).
 //
 // Most providers do not return the SESSION_HANDLE_PARAM needed to refresh
 // the token.
@@ -273,7 +273,7 @@ func (c *Consumer) AuthorizeToken(rtoken *RequestToken, verificationCode string)
 //        revoked by the user or the service provider).
 //
 //      - err:
-//        Set if accessToken does not contain the SESSION_HANDLE_PARAM needed to 
+//        Set if accessToken does not contain the SESSION_HANDLE_PARAM needed to
 //        refresh the token, or if an error occurred when making the request.
 func (c *Consumer) RefreshToken(accessToken *AccessToken) (atoken *AccessToken, err error) {
 	params := make(map[string]string)
