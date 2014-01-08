@@ -62,7 +62,7 @@ const (
 	SIGNATURE_PARAM        = "oauth_signature"
 	TIMESTAMP_PARAM        = "oauth_timestamp"
 	TOKEN_PARAM            = "oauth_token"
-	TOKEN_SECRET_PARAM     = "oauth_token_secret"
+	TOKEN_SECRET_PARAM     = "oauth_secret"
 	VERIFIER_PARAM         = "oauth_verifier"
 	VERSION_PARAM          = "oauth_version"
 )
